@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Child from './component/Child'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  constructor(){
+    super()
+    this.state={
+      dataList:[
+        {
+          languages: "js",
+          position:"admin",
+          dayOfBirth: "29/02/1999",
+          name:"Thanh Trung"
+        }
+      ]
+    }
+  }
+  
+  getData=(keyList)=>{
+    this.setState={
+      dataList:keyList
+      
+    }
+    console.log(this.state.dataList)
+  }
+
+  addIter = (iter) => {
+    this.setState({
+      dataList: this.state.dataList.push(iter)
+    })
+
+    console.log("🚀 ~ file: App.js:10 ~ App ~ constructor ~ dataList:", this.state.dataList)
+  }
+  render() {
+    // console.log(this.state.dataList)
+    return (
+      <div>App
+        <Child addIter={this.addIter}></Child>
+      </div>
+    )
+  }
 }
-
-export default App;
